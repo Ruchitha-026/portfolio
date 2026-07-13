@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="An original interactive student timeline showing the history and evolution of artificial intelligence.">
+
+<title>The Intelligence Line | AI Metro Timeline</title>
+<style>
+:root{--cream:#fff8e7;--navy:#14223b;--blue:#2878ff;--red:#ef4056;--yellow:#ffca3a;--green:#31b77a;--muted:#5f6a77}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--navy);font-family:Arial,Helvetica,sans-serif;line-height:1.55}a{color:#155aca}
+.hero{padding:clamp(3rem,8vw,8rem) max(1rem,calc((100vw - 1120px)/2));display:grid;grid-template-columns:1.2fr .8fr;gap:4rem;align-items:center;background:var(--navy);color:white;clip-path:polygon(0 0,100% 0,100% 90%,0 100%)}
+.badge{display:inline-flex;align-items:center;gap:.6rem;border:2px solid white;border-radius:999px;padding:.45rem .8rem;font-weight:bold;text-transform:uppercase;letter-spacing:.1em;font-size:.74rem}.badge:before{content:"";width:1rem;height:1rem;border-radius:50%;background:var(--yellow)}
+h1{font-size:clamp(3.5rem,9vw,7.5rem);line-height:.85;letter-spacing:-.065em;margin:1rem 0}.hero p{font-size:1.15rem;color:#cdd9ed;max-width:720px}.map-card{background:#fff;color:var(--navy);padding:2rem;border-radius:28px;transform:rotate(3deg);box-shadow:18px 18px 0 var(--blue)}.mini-line{height:16px;background:linear-gradient(90deg,var(--blue) 0 34%,var(--red) 34% 56%,var(--green) 56% 100%);border-radius:99px;position:relative;margin:3rem 0}.mini-line:before,.mini-line:after{content:"";position:absolute;top:50%;width:34px;height:34px;border:8px solid var(--navy);background:#fff;border-radius:50%;transform:translateY(-50%)}.mini-line:before{left:14%}.mini-line:after{right:14%}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;font-weight:bold}.legend span:before{content:"";display:inline-block;width:.7rem;height:.7rem;border-radius:50%;margin-right:.5rem;background:var(--blue)}.legend span:nth-child(2):before{background:var(--red)}.legend span:nth-child(3):before{background:var(--green)}.legend span:nth-child(4):before{background:var(--yellow)}
+.route{width:min(920px,calc(100% - 2rem));margin:5rem auto 8rem;position:relative;padding-left:210px}.route:before{content:"";position:absolute;left:172px;top:25px;bottom:25px;width:16px;border-radius:99px;background:linear-gradient(var(--blue) 0 37%,var(--red) 37% 48%,var(--green) 48% 100%);box-shadow:inset 0 0 0 3px rgba(20,34,59,.12)}
+.station{position:relative;margin-bottom:1.2rem;opacity:0;transform:translateX(35px);animation:arrive .55s forwards;animation-delay:calc(var(--i)*55ms)}@keyframes arrive{to{opacity:1;transform:none}}.stop{width:100%;border:0;background:transparent;color:inherit;text-align:left;font:inherit;display:flex;align-items:center;gap:1.25rem;cursor:pointer;padding:.7rem 0}
+.ring{position:absolute;left:-57px;width:52px;height:52px;border:10px solid var(--blue);border-radius:50%;background:var(--cream);display:grid;place-items:center;font-size:1rem;font-weight:bold;transition:.3s;z-index:2}.station:nth-child(n+8):nth-child(-n+10) .ring,.station.winter .ring{border-color:var(--red)}.station:nth-child(n+11) .ring{border-color:var(--green)}.stop:hover .ring,.stop[aria-expanded=true] .ring{transform:scale(1.15);background:var(--yellow)}
+.label{display:grid;grid-template-columns:120px 1fr;align-items:center;width:100%;font-size:1.1rem;font-weight:800;padding:1rem 1.2rem;background:#fff;border:2px solid #dce0e6;border-radius:16px;box-shadow:0 8px 0 rgba(20,34,59,.08)}.label b{font-size:1.2rem;color:var(--blue)}.winter .label b{color:var(--red)}
+.panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s;margin-left:0}.panel>*{overflow:hidden}.panel p{margin:0;padding:0 1.3rem;color:var(--muted)}.panel.open{grid-template-rows:1fr;padding:.8rem 0 1rem}.panel.open p{margin:.4rem 0}
+.depot{text-align:center;padding:2rem;margin:0 auto 6rem;width:min(820px,calc(100% - 2rem));border:3px dashed var(--navy);border-radius:24px}.depot h2{font-size:2rem;margin:.2rem}.sources{padding:6rem max(1rem,calc((100vw - 1080px)/2));background:#eef3f8}.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:var(--blue);font-weight:900}.sources h2{font-size:clamp(2.2rem,5vw,4.5rem);margin:.4rem 0 2rem}.source-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}.source-grid article,.disclosure{background:white;border:2px solid #dbe2ea;border-radius:20px;padding:1.4rem}.sources li{margin:.8rem 0;color:var(--muted)}.disclosure{margin-top:1.2rem;border-left:8px solid var(--yellow)}footer{background:var(--navy);color:white;text-align:center;padding:2rem}
+@media(max-width:800px){.hero{grid-template-columns:1fr;clip-path:none}.map-card{transform:none}.route{padding-left:80px}.route:before{left:43px}.ring{left:-55px}.label{grid-template-columns:1fr;gap:.2rem}.source-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.station{opacity:1;transform:none}}
+</style>
+<style>.portfolio-return{position:fixed;z-index:99;left:14px;top:14px;background:#14223b;color:white!important;text-decoration:none;padding:.65rem .9rem;border-radius:999px;font:bold .78rem Arial;box-shadow:0 8px 24px rgba(0,0,0,.25)}.portfolio-return:hover{background:#2878ff}</style></head>
+<body><a class="portfolio-return" href="artifact-1.html#artifact-1a">← Portfolio</a>
+<header class="hero"><div><span class="badge">AI History Transit Authority</span><h1>The Intelligence Line</h1><p>Board a route through symbolic reasoning, AI winters, expert systems, machine learning, deep learning, cloud computing, transformers, and generative AI.</p></div><aside class="map-card"><h2>Route guide</h2><div class="mini-line"></div><div class="legend"><span>Foundations</span><span>AI winters</span><span>Modern learning</span><span>Transfer points</span></div></aside></header>
+<main class="route" aria-label="Artificial intelligence timeline">
+    <article class="station " style="--i:0">
+      <button class="stop" aria-expanded="false"><span class="ring">◇</span><span class="label"><b>1950</b>Turing Asks, “Can Machines Think?”</span></button>
+      <div class="panel"><p>Alan Turing published “Computing Machinery and Intelligence” and introduced the imitation game, later called the Turing Test. The paper gave researchers a practical way to discuss machine intelligence.</p><p><strong>Main players:</strong> Alan Turing</p><p><strong>Impact:</strong> Created an early framework for evaluating intelligent behavior.</p></div>
+    </article>
+
+    <article class="station " style="--i:1">
+      <button class="stop" aria-expanded="false"><span class="ring">✦</span><span class="label"><b>1956</b>Artificial Intelligence Becomes a Field</span></button>
+      <div class="panel"><p>John McCarthy, Marvin Minsky, Claude Shannon, and Nathaniel Rochester organized the Dartmouth Summer Research Project. The proposal helped establish the term “artificial intelligence.”</p><p><strong>Main players:</strong> McCarthy · Minsky · Shannon · Rochester</p><p><strong>Impact:</strong> Brought researchers together around a shared field of study.</p></div>
+    </article>
+
+    <article class="station " style="--i:2">
+      <button class="stop" aria-expanded="false"><span class="ring">◎</span><span class="label"><b>1958</b>The Perceptron Learns Patterns</span></button>
+      <div class="panel"><p>Frank Rosenblatt demonstrated the perceptron, an early trainable neural-network model. It showed that a machine could adjust internal weights from examples.</p><p><strong>Main players:</strong> Frank Rosenblatt</p><p><strong>Impact:</strong> Introduced a foundation for later neural-network learning.</p></div>
+    </article>
+
+    <article class="station " style="--i:3">
+      <button class="stop" aria-expanded="false"><span class="ring">⌁</span><span class="label"><b>1966</b>ELIZA Simulates Conversation</span></button>
+      <div class="panel"><p>Joseph Weizenbaum created ELIZA, a program that matched text patterns to imitate a psychotherapist. Its simple rules still convinced some users that the computer understood them.</p><p><strong>Main players:</strong> Joseph Weizenbaum · MIT</p><p><strong>Impact:</strong> Raised early questions about language, trust, and human attachment to machines.</p></div>
+    </article>
+
+    <article class="station " style="--i:4">
+      <button class="stop" aria-expanded="false"><span class="ring">▣</span><span class="label"><b>1969</b>Shakey Connects Reasoning and Action</span></button>
+      <div class="panel"><p>SRI’s Shakey robot combined perception, planning, and movement. It was an important step toward robots that could reason about their surroundings.</p><p><strong>Main players:</strong> SRI International</p><p><strong>Impact:</strong> Linked symbolic planning with real-world robotic behavior.</p></div>
+    </article>
+
+    <article class="station " style="--i:5">
+      <button class="stop" aria-expanded="false"><span class="ring">✚</span><span class="label"><b>1972</b>MYCIN Applies Expert Knowledge</span></button>
+      <div class="panel"><p>Researchers at Stanford developed MYCIN to recommend antibiotics for bacterial infections. It used hand-written rules and demonstrated the value of specialized, narrow AI.</p><p><strong>Main players:</strong> Stanford University</p><p><strong>Impact:</strong> Showed how expert systems could support decisions in a focused domain.</p></div>
+    </article>
+
+    <article class="station winter" style="--i:6">
+      <button class="stop" aria-expanded="false"><span class="ring">❄</span><span class="label"><b>1974–1980</b>The First AI Winter</span></button>
+      <div class="panel"><p>Early promises exceeded the available computing power, data, and program capability. Funding declined when systems could not handle the complexity of real environments.</p><p><strong>Main players:</strong> Research agencies and universities</p><p><strong>Impact:</strong> Reduced investment and forced the field to reconsider unrealistic expectations.</p></div>
+    </article>
+
+    <article class="station " style="--i:7">
+      <button class="stop" aria-expanded="false"><span class="ring">⚙</span><span class="label"><b>1980–1986</b>Expert Systems Enter Business</span></button>
+      <div class="panel"><p>Rule-based systems such as XCON helped companies configure products and preserve specialist knowledge. Commercial success brought AI back into corporate planning.</p><p><strong>Main players:</strong> Digital Equipment Corporation · Carnegie Mellon</p><p><strong>Impact:</strong> Moved AI from laboratories into practical business operations.</p></div>
+    </article>
+
+    <article class="station winter" style="--i:8">
+      <button class="stop" aria-expanded="false"><span class="ring">❄</span><span class="label"><b>1987–1993</b>The Second AI Winter</span></button>
+      <div class="panel"><p>Expert systems were expensive to maintain, specialized hardware lost value, and many projects failed to meet expectations. Investment and public confidence fell again.</p><p><strong>Main players:</strong> AI vendors · corporate adopters</p><p><strong>Impact:</strong> Encouraged researchers to seek data-driven methods that could improve with experience.</p></div>
+    </article>
+
+    <article class="station " style="--i:9">
+      <button class="stop" aria-expanded="false"><span class="ring">♞</span><span class="label"><b>1997</b>Deep Blue Defeats Kasparov</span></button>
+      <div class="panel"><p>IBM’s Deep Blue defeated world chess champion Garry Kasparov in a six-game match. Massive parallel computing and carefully designed search demonstrated machine strength in a complex task.</p><p><strong>Main players:</strong> IBM · Garry Kasparov</p><p><strong>Impact:</strong> Made AI achievement visible to a worldwide audience.</p></div>
+    </article>
+
+    <article class="station " style="--i:10">
+      <button class="stop" aria-expanded="false"><span class="ring">⬡</span><span class="label"><b>2006</b>Deep Learning Returns</span></button>
+      <div class="panel"><p>Geoffrey Hinton and collaborators showed improved methods for training multilayer neural networks. Larger datasets and faster processors made connectionist approaches practical again.</p><p><strong>Main players:</strong> Geoffrey Hinton and collaborators</p><p><strong>Impact:</strong> Renewed interest in neural networks after years of limited progress.</p></div>
+    </article>
+
+    <article class="station " style="--i:11">
+      <button class="stop" aria-expanded="false"><span class="ring">▦</span><span class="label"><b>2009</b>ImageNet Creates a Data Foundation</span></button>
+      <div class="panel"><p>Fei-Fei Li and collaborators built ImageNet, a large labeled image database and benchmark. It gave computer-vision researchers a common way to train and compare models.</p><p><strong>Main players:</strong> Fei-Fei Li · Princeton · Stanford</p><p><strong>Impact:</strong> Demonstrated how large, organized datasets could accelerate model improvement.</p></div>
+    </article>
+
+    <article class="station " style="--i:12">
+      <button class="stop" aria-expanded="false"><span class="ring">?</span><span class="label"><b>2011</b>Watson Wins Jeopardy!</span></button>
+      <div class="panel"><p>IBM Watson defeated champion players on Jeopardy! by combining natural-language processing, information retrieval, ranking, and large-scale computing.</p><p><strong>Main players:</strong> IBM Research</p><p><strong>Impact:</strong> Showed that machines could process clues, ambiguity, and broad knowledge under time pressure.</p></div>
+    </article>
+
+    <article class="station " style="--i:13">
+      <button class="stop" aria-expanded="false"><span class="ring">◉</span><span class="label"><b>2012</b>AlexNet Changes Computer Vision</span></button>
+      <div class="panel"><p>Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton used GPUs to train a deep convolutional network that won the ImageNet competition by a large margin.</p><p><strong>Main players:</strong> Krizhevsky · Sutskever · Hinton · NVIDIA GPUs</p><p><strong>Impact:</strong> Proved that deep networks, big data, and GPUs could outperform traditional vision methods.</p></div>
+    </article>
+
+    <article class="station " style="--i:14">
+      <button class="stop" aria-expanded="false"><span class="ring">∞</span><span class="label"><b>2014</b>GANs Learn to Generate</span></button>
+      <div class="panel"><p>Ian Goodfellow and colleagues introduced generative adversarial networks. A generator and discriminator trained against each other to produce increasingly realistic outputs.</p><p><strong>Main players:</strong> Ian Goodfellow and collaborators</p><p><strong>Impact:</strong> Opened a major path for synthetic images and generative modeling.</p></div>
+    </article>
+
+    <article class="station " style="--i:15">
+      <button class="stop" aria-expanded="false"><span class="ring">☁</span><span class="label"><b>2015</b>Cloud Platforms Expand AI Access</span></button>
+      <div class="panel"><p>Amazon Web Services, Microsoft Azure, and Google Cloud expanded access to scalable storage, GPUs, machine-learning tools, and hosted APIs.</p><p><strong>Main players:</strong> AWS · Microsoft · Google</p><p><strong>Impact:</strong> Allowed students, startups, and enterprises to build AI without owning a supercomputer.</p></div>
+    </article>
+
+    <article class="station " style="--i:16">
+      <button class="stop" aria-expanded="false"><span class="ring">●</span><span class="label"><b>2016</b>AlphaGo Defeats Lee Sedol</span></button>
+      <div class="panel"><p>DeepMind’s AlphaGo won four of five games against Go champion Lee Sedol. It combined deep neural networks, search, and reinforcement learning.</p><p><strong>Main players:</strong> Google DeepMind · Lee Sedol</p><p><strong>Impact:</strong> Demonstrated learning and planning in a problem once considered far beyond computers.</p></div>
+    </article>
+
+    <article class="station " style="--i:17">
+      <button class="stop" aria-expanded="false"><span class="ring">↯</span><span class="label"><b>2017</b>Attention Is All You Need</span></button>
+      <div class="panel"><p>Google researchers introduced the Transformer architecture. Its attention mechanism enabled parallel training and became the foundation for modern large language models.</p><p><strong>Main players:</strong> Vaswani and collaborators · Google</p><p><strong>Impact:</strong> Changed natural-language processing and later influenced vision, audio, and multimodal AI.</p></div>
+    </article>
+
+    <article class="station " style="--i:18">
+      <button class="stop" aria-expanded="false"><span class="ring">▤</span><span class="label"><b>2020</b>GPT-3 Demonstrates Scale</span></button>
+      <div class="panel"><p>OpenAI released GPT-3, a 175-billion-parameter language model that could perform many tasks from instructions and examples without task-specific retraining.</p><p><strong>Main players:</strong> OpenAI</p><p><strong>Impact:</strong> Popularized few-shot prompting and showed how model scale could produce broad language capability.</p></div>
+    </article>
+
+    <article class="station " style="--i:19">
+      <button class="stop" aria-expanded="false"><span class="ring">✧</span><span class="label"><b>2022</b>ChatGPT Brings AI to the Public</span></button>
+      <div class="panel"><p>OpenAI launched ChatGPT as a conversational interface. Generative AI rapidly entered education, software development, business, and creative work.</p><p><strong>Main players:</strong> OpenAI · Microsoft</p><p><strong>Impact:</strong> Turned large language models into a widely used everyday technology.</p></div>
+    </article>
+
+    <article class="station " style="--i:20">
+      <button class="stop" aria-expanded="false"><span class="ring">◈</span><span class="label"><b>2023–Present</b>Models Become Multimodal</span></button>
+      <div class="panel"><p>Leading systems began working across text, images, audio, and video. OpenAI, Google, Anthropic, Meta, Microsoft, NVIDIA, and cloud providers competed to improve capability and deployment.</p><p><strong>Main players:</strong> OpenAI · Google · Anthropic · Meta · Microsoft · NVIDIA</p><p><strong>Impact:</strong> Expanded AI from prediction toward content creation, assistants, coding, science, and industry workflows.</p></div>
+    </article></main>
+<section class="depot"><h2>End of the line?</h2><p>No. AI history shows repeated cycles of confidence and correction. The next stage will depend on technical progress, responsible use, regulation, access to computing, and human choices.</p></section>
+
+<section class="sources" id="sources">
+  <p class="eyebrow">Research trail</p>
+  <h2>Sources and AI Assistance</h2>
+  <div class="source-grid">
+    <article>
+      <h3>Assigned resources</h3>
+      <ol>
+        <li>Putchuon – “Put You On.” (2024, May 30). <em>The entire history of artificial intelligence (Last 100 years)</em> [Video]. YouTube. <a href="https://www.youtube.com/watch?v=mSd9nmPM7Vg" target="_blank" rel="noopener">View source</a></li>
+        <li>IEEE Computer Society. (2025, March 11). <em>The evolution of AI: From foundations to future prospects.</em> <a href="https://www.computer.org/publications/tech-news/research/evolution-of-ai" target="_blank" rel="noopener">View source</a></li>
+        <li>Roser, M. (2022). <em>The brief history of artificial intelligence: The world has changed fast—what might be next?</em> Our World in Data. <a href="https://ourworldindata.org/brief-history-of-ai" target="_blank" rel="noopener">View source</a></li>
+      </ol>
+    </article>
+    <article>
+      <h3>Milestone references</h3>
+      <ol>
+        <li>Dartmouth College. (n.d.). <em>Artificial intelligence coined at Dartmouth.</em> <a href="https://home.dartmouth.edu/about/artificial-intelligence-ai-coined-dartmouth" target="_blank" rel="noopener">View source</a></li>
+        <li>IBM. (n.d.). <em>Deep Blue.</em> <a href="https://www.ibm.com/history/deep-blue" target="_blank" rel="noopener">View source</a></li>
+        <li>Krizhevsky, A., Sutskever, I., &amp; Hinton, G. E. (2012). <em>ImageNet classification with deep convolutional neural networks.</em> <a href="https://proceedings.neurips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf" target="_blank" rel="noopener">View paper</a></li>
+        <li>Vaswani, A., et al. (2017). <em>Attention is all you need.</em> <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">View paper</a></li>
+        <li>Google DeepMind. (n.d.). <em>AlphaGo.</em> <a href="https://deepmind.google/research/alphago/" target="_blank" rel="noopener">View source</a></li>
+      </ol>
+    </article>
+  </div>
+  <aside class="disclosure">
+    <strong>AI assistance disclosure:</strong> I used ChatGPT to help organize the historical milestones, improve short descriptions, and troubleshoot the HTML, CSS, and JavaScript. I reviewed the dates against the sources above, selected the final content, and customized the design and presentation.
+  </aside>
+</section>
+
+<footer>Original metro-style visual timeline created with HTML, CSS, and JavaScript.</footer>
+<script>
+document.querySelectorAll('.stop').forEach(stop=>stop.addEventListener('click',()=>{const panel=stop.nextElementSibling,open=panel.classList.toggle('open');stop.setAttribute('aria-expanded',open);}));
+</script>
+</body></html>
