@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Workshop Four data quality and human bias audit with Python evidence by Ruchitha Nelluri.">
+  <title>Data Quality & Bias Audit | Ruchitha Nelluri</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header"><nav class="navbar container" aria-label="Primary navigation"><a class="brand" href="index.html"><span class="brand-mark">RN</span><span>Ruchitha Nelluri</span></a><div class="nav-links"><a href="index.html">Home</a><a aria-current="page" href="artifacts.html">Artifacts</a><a href="resume.html">Resume</a><a href="index.html#contact">Contact</a></div><button class="menu-toggle" aria-expanded="false" aria-label="Open navigation">☰</button></nav></header>
+<main id="main">
+  <section class="artifact-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a> / <a href="artifacts.html">Artifacts</a> / Data Quality & Bias Audit</div>
+      <div class="artifact-hero-grid">
+        <div><span class="eyebrow">Workshop Four · data challenges and human bias</span><h1>Data Quality & Bias Audit</h1><p class="artifact-intro">A reproducible Python audit that identifies common data-quality failures, standardizes records, compares group-level outcomes, and keeps final decisions under documented human review.</p><div class="tag-row"><span class="tag">Data cleaning</span><span class="tag">pandas</span><span class="tag">Bias audit</span><span class="tag">Privacy</span><span class="tag">Human oversight</span></div></div>
+        <aside class="artifact-scorecard"><div class="score"><strong>13 → 12</strong><span>raw rows to unique records</span></div><div class="score"><strong>4</strong><span>data-quality issue types found</span></div><div class="score"><strong>0.50</strong><span>historical rate gap</span></div><div class="score"><strong>0.17</strong><span>audited rule rate gap</span></div></aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="container detail-shell" data-tabs>
+      <nav class="detail-tabs" role="tablist" aria-label="Artifact sections"><button class="detail-tab active" data-tab-target="context" role="tab" aria-selected="true">Context</button><button class="detail-tab" data-tab-target="evidence" role="tab" aria-selected="false">Evidence</button><button class="detail-tab" data-tab-target="reflection" role="tab" aria-selected="false">Reflection</button></nav>
+      <div class="detail-content">
+        <section class="detail-panel active" data-tab-panel="context">
+          <span class="kicker">Why this work matters</span><h2>Context, purpose, and audience</h2>
+          <div class="info-grid">
+            <article class="info-card"><h3>Workshop context</h3><p>Workshop Four examined data challenges in machine learning, processing and cleaning, data sharing, privacy, security, human bias, communication, and responsible change leadership.</p></article>
+            <article class="info-card"><h3>Purpose and audience</h3><p>The audit is intended for instructors, technical reviewers, and leaders who need a simple example of how poor data and historical human decisions can affect AI-supported outcomes.</p></article>
+            <article class="info-card"><h3>Problem addressed</h3><p>The synthetic training-selection records include a duplicate, a missing score, an impossible attendance value, and inconsistent shift labels. Historical manager nominations also show a large difference between groups.</p></article>
+            <article class="info-card"><h3>Professional relevance</h3><p>The artifact demonstrates that leaders should not accept clean-looking model outputs without examining the underlying records, decision history, access controls, and impact on different groups.</p></article>
+          </div>
+          <h3 style="margin-top:1.2rem">Skills and learning outcomes</h3>
+          <div class="competency-list"><div class="competency">Detect duplicates, missing values, out-of-range values, and inconsistent categories before model use.</div><div class="competency">Apply transparent cleaning rules and retain reproducible evidence of the transformation.</div><div class="competency">Compare group-level positive rates to identify patterns that may require investigation.</div><div class="competency">Explain why privacy, least-privilege access, secure sharing, documentation, and human review are leadership responsibilities.</div></div>
+          <div class="evidence-block"><h3>Important boundary</h3><p>The dataset is synthetic and the rule is only an educational comparison. It must not be used as an automated employment decision. Real decisions require validated job-related criteria, legal and policy review, representative data, documented appeals, and qualified human judgment.</p></div>
+        </section>
+
+        <section class="detail-panel" data-tab-panel="evidence">
+          <span class="kicker">Reproducible Python audit</span><h2>Evidence and process</h2>
+          <div class="evidence-block"><div class="evidence-head"><div><h3>Data-quality controls</h3><p>The script profiles the raw records, removes the duplicate candidate, standardizes shift labels, replaces invalid attendance with a group median, imputes the missing assessment score, and calculates group-level positive rates for both historical nominations and a published objective review threshold.</p></div><div class="cta-row" style="margin-top:0"><a class="button primary" href="evidence/data_quality_bias_audit.py">Download Python code</a><a class="button secondary" href="evidence/data_quality_cleaned.csv">Download cleaned CSV</a></div></div></div>
+          <div class="result-grid"><div class="result-card"><strong>1</strong><span>duplicate record removed</span></div><div class="result-card"><strong>1</strong><span>missing score imputed</span></div><div class="result-card"><strong>1</strong><span>invalid attendance value corrected</span></div><div class="result-card"><strong>5 → 2</strong><span>shift-label variants standardized</span></div><div class="result-card"><strong>0.50</strong><span>historical selection-rate gap</span></div><div class="result-card"><strong>0.17</strong><span>objective review-rate gap</span></div></div>
+          <div class="media-frame"><div class="frame-bar"><span>The chart compares historical manager nominations with a transparent review rule.</span><span>Rates require interpretation, not automatic conclusions.</span></div><img src="assets/data_bias_audit.png" alt="Bar chart comparing historical nomination rates and objective review-rule rates for Day and Evening shift groups"></div>
+          <div class="evidence-block"><h3>Audit summary</h3><table class="data-table"><thead><tr><th>Measure</th><th>Day shift</th><th>Evening shift</th><th>Absolute gap</th></tr></thead><tbody><tr><td>Historical manager nomination</td><td>66.7%</td><td>16.7%</td><td>50.0 percentage points</td></tr><tr><td>Objective review rule</td><td>66.7%</td><td>83.3%</td><td>16.7 percentage points</td></tr></tbody></table><p>The smaller gap after applying documented criteria is a signal that historical nomination patterns deserve review. It is not proof that the new rule is fair, because sample size, job relevance, measurement quality, and other group impacts still need validation.</p></div>
+          <details class="code-details"><summary>View key Python evidence</summary><pre><code>cleaned = raw.drop_duplicates(subset=["candidate_id"]).copy()
+cleaned["shift"] = cleaned["shift"].str.strip().str.title()
+
+cleaned.loc[
+    ~cleaned["attendance_pct"].between(0, 100),
+    "attendance_pct"
+] = np.nan
+
+cleaned["assessment_score"] = cleaned.groupby("shift")[
+    "assessment_score"
+].transform(lambda values: values.fillna(values.median()))
+
+cleaned["objective_eligible"] = (
+    (cleaned["assessment_score"] >= 75)
+    & (cleaned["attendance_pct"] >= 88)
+).astype(int)</code></pre></details>
+          <div class="evidence-block"><h3>Privacy, security, and communication controls</h3><p>A real workflow should minimize personal data, restrict access by role, encrypt data in storage and transit, log changes, define retention periods, and avoid sharing identifiable records in unapproved tools. Leaders should communicate what data is used, how decisions are reviewed, how errors can be corrected, and where employees can raise concerns without retaliation.</p></div>
+        </section>
+
+        <section class="detail-panel" data-tab-panel="reflection">
+          <span class="kicker">Student reflection</span><h2>Reflection and self-assessment</h2>
+          <div class="reflection-card"><p>This artifact showed me that data cleaning is not only a technical step. Each choice about duplicates, missing values, outliers, and category labels can change the result that a model produces. I also saw how historical human decisions can enter a dataset and appear objective later. In this example, the manager-nomination rates were very different across shifts, so a leader should pause, investigate the process, and communicate openly instead of assuming that the historical label is automatically correct.</p><p>The Python audit strengthened my ability to connect code with responsible leadership. I created repeatable cleaning rules and calculated group-level rates, but I also documented that a smaller gap does not prove fairness. Real decisions would require better data, job-related validation, privacy and security controls, stakeholder input, an appeal process, and continued monitoring. My next step is to test multiple thresholds and error rates so the review considers both who is selected and who may be incorrectly excluded.</p></div>
+          <div class="reflection-note"><div><strong>Strength</strong><span>Combined cleaning evidence with impact review.</span></div><div><strong>Growth</strong><span>Recognized how human history enters model labels.</span></div><div><strong>Next step</strong><span>Add threshold, error-rate, and sensitivity analysis.</span></div></div>
+        </section>
+        <div class="artifact-switcher"><a href="neural-network-lab.html"><span>Previous project</span><strong>← Neural Network Learning Lab</strong></a><a href="artifacts.html"><span>Return to</span><strong>All artifacts →</strong></a></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer"><div class="container footer-grid"><span>Ruchitha Nelluri · Applied AI portfolio</span><a href="artifacts.html">Artifact catalog →</a></div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "raw_rows": 13,
+  "duplicate_rows": 1,
+  "missing_scores": 1,
+  "invalid_attendance": 1,
+  "shift_label_variants": 5,
+  "clean_rows": 12,
+  "historical_day_rate": 0.667,
+  "historical_evening_rate": 0.167,
+  "historical_rate_gap": 0.5,
+  "objective_day_rate": 0.667,
+  "objective_evening_rate": 0.833,
+  "objective_rate_gap": 0.167
+}

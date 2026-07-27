@@ -1,14 +1,25 @@
 # Ruchitha Nelluri Professional Portfolio
 
-## Current navigation
+This revision uses a compact multi-page structure rather than one long scrolling document.
+
+## Main navigation
 
 - Home
 - Artifacts
 - Resume
 - Contact
 
-The Artifacts catalog currently displays only completed work:
+## Portfolio artifacts
 
-- Artifact 1A: The Intelligence Line
-- Artifact 1B: EventEase AI
+- The Intelligence Line
+- EventEase AI
+- Neural Network Learning Lab
+- Data Quality & Bias Audit
 
+Each project page includes three focused tabs:
+
+- Context
+- Evidence
+- Reflection
+
+The Workshop Three and Workshop Four projects include reproducible Python code and generated evidence files. Reflections are included directly in the website and are written as two concise paragraphs for each artifact.

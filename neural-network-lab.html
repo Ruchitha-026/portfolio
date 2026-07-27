@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Workshop Three neural network learning lab and Python evidence by Ruchitha Nelluri.">
+  <title>Neural Network Learning Lab | Ruchitha Nelluri</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header"><nav class="navbar container" aria-label="Primary navigation"><a class="brand" href="index.html"><span class="brand-mark">RN</span><span>Ruchitha Nelluri</span></a><div class="nav-links"><a href="index.html">Home</a><a aria-current="page" href="artifacts.html">Artifacts</a><a href="resume.html">Resume</a><a href="index.html#contact">Contact</a></div><button class="menu-toggle" aria-expanded="false" aria-label="Open navigation">☰</button></nav></header>
+<main id="main">
+  <section class="artifact-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a> / <a href="artifacts.html">Artifacts</a> / Neural Network Learning Lab</div>
+      <div class="artifact-hero-grid">
+        <div><span class="eyebrow">Workshop Three · adapting to challenges</span><h1>Neural Network Learning Lab</h1><p class="artifact-intro">A reproducible Python demonstration of how a small artificial neural network learns from feedback, adjusts internal weights, and improves its predictions over repeated training cycles.</p><div class="tag-row"><span class="tag">ANN</span><span class="tag">Activation functions</span><span class="tag">Backpropagation</span><span class="tag">Python · NumPy</span><span class="tag">AI ethics</span></div></div>
+        <aside class="artifact-scorecard"><div class="score"><strong>2–4–1</strong><span>network architecture</span></div><div class="score"><strong>10,000</strong><span>training epochs</span></div><div class="score"><strong>0.00094</strong><span>final training loss</span></div><div class="score"><strong>4/4</strong><span>XOR cases classified</span></div></aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="container detail-shell" data-tabs>
+      <nav class="detail-tabs" role="tablist" aria-label="Artifact sections"><button class="detail-tab active" data-tab-target="context" role="tab" aria-selected="true">Context</button><button class="detail-tab" data-tab-target="evidence" role="tab" aria-selected="false">Evidence</button><button class="detail-tab" data-tab-target="reflection" role="tab" aria-selected="false">Reflection</button></nav>
+      <div class="detail-content">
+        <section class="detail-panel active" data-tab-panel="context">
+          <span class="kicker">Why this work matters</span><h2>Context, purpose, and audience</h2>
+          <div class="info-grid">
+            <article class="info-card"><h3>Workshop context</h3><p>Workshop Three explored how faith and resilience support adaptation, how neural networks learn, how change leadership depends on communication, and how synthetic media can create ethical risks.</p></article>
+            <article class="info-card"><h3>Purpose and audience</h3><p>The lab was created for instructors, classmates, and technical reviewers who want visible evidence that I understand the learning process rather than only recognizing model definitions.</p></article>
+            <article class="info-card"><h3>Problem addressed</h3><p>The XOR pattern cannot be solved by a single linear rule. A hidden layer is needed, making it a small but meaningful example of how neural networks learn nonlinear relationships.</p></article>
+            <article class="info-card"><h3>Professional relevance</h3><p>The project connects model training with validation thinking: define expected behavior, control the inputs, record the loss, inspect outputs, and avoid treating a successful demo as proof of production readiness.</p></article>
+          </div>
+          <h3 style="margin-top:1.2rem">Neural-network concepts connected to the workshop</h3>
+          <div class="competency-list"><div class="competency"><strong>ANN:</strong> learns general input-to-output relationships through weighted layers and activation functions.</div><div class="competency"><strong>CNN:</strong> uses filters and shared weights to detect spatial patterns in images and other grid-like data.</div><div class="competency"><strong>RNN:</strong> carries information across a sequence, supporting time-series, language, and ordered-event analysis.</div><div class="competency"><strong>GAN:</strong> trains a generator and discriminator in competition, creating useful synthetic data but also deepfake risks.</div></div>
+          <h3 style="margin-top:1.2rem">Skills and learning outcomes</h3>
+          <div class="competency-list"><div class="competency">Describe forward propagation, sigmoid activation, loss calculation, and backpropagation in my own words.</div><div class="competency">Connect repeated feedback and adjustment with resilient problem-solving and adaptive leadership.</div><div class="competency">Distinguish ANN, CNN, RNN, and GAN architectures by the type of problem each addresses.</div><div class="competency">Recognize that synthetic outputs require disclosure, verification, consent, and safeguards against deception.</div></div>
+        </section>
+
+        <section class="detail-panel" data-tab-panel="evidence">
+          <span class="kicker">Reproducible Python lab</span><h2>Evidence and process</h2>
+          <div class="evidence-block"><div class="evidence-head"><div><h3>From-scratch XOR training</h3><p>The code uses NumPy rather than a deep-learning framework so the main learning steps remain visible. A two-input, four-hidden-neuron, one-output network performs forward propagation, calculates binary cross-entropy loss, applies backpropagation, and updates weights over 10,000 epochs.</p></div><div class="cta-row" style="margin-top:0"><a class="button primary" href="evidence/neural_network_training_demo.py">Download Python code</a><a class="button secondary" href="evidence/neural_network_results.csv">Download results CSV</a></div></div></div>
+          <div class="media-frame"><div class="frame-bar"><span>The decreasing curve shows learning through iterative correction.</span><span>Generated by the included Python script</span></div><img src="assets/neural_training_loss.png" alt="Line chart showing neural network loss decreasing across 10,000 training epochs"></div>
+          <div class="evidence-block"><h3>Final predictions</h3><table class="data-table"><thead><tr><th>Input A</th><th>Input B</th><th>Expected</th><th>Predicted probability</th><th>Class</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>0.0008</td><td>0</td></tr><tr><td>0</td><td>1</td><td>1</td><td>0.9991</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td><td>0.9989</td><td>1</td></tr><tr><td>1</td><td>1</td><td>0</td><td>0.0009</td><td>0</td></tr></tbody></table></div>
+          <details class="code-details"><summary>View key Python evidence</summary><pre><code>def sigmoid(values):
+    return 1.0 / (1.0 + np.exp(-values))
+
+for epoch in range(EPOCHS + 1):
+    hidden = sigmoid(inputs @ weights_hidden + bias_hidden)
+    predictions = sigmoid(hidden @ weights_output + bias_output)
+
+    loss = binary_cross_entropy(targets, predictions)
+
+    output_error = predictions - targets
+    grad_weights_output = hidden.T @ output_error / len(inputs)
+    hidden_error = (output_error @ weights_output.T) \
+        * sigmoid_derivative(hidden)
+
+    weights_output -= LEARNING_RATE * grad_weights_output
+    weights_hidden -= LEARNING_RATE * grad_weights_hidden</code></pre></details>
+          <div class="evidence-block"><h3>Ethical interpretation</h3><p>This result confirms that the small network learned the four controlled examples. It does not establish fairness, robustness, or suitability for a real application. Production use would require representative data, independent validation, security review, monitoring, explainability appropriate to the risk, and human accountability. GAN-generated synthetic data or deepfakes would also require clear labeling and controls against impersonation or misleading content.</p></div>
+        </section>
+
+        <section class="detail-panel" data-tab-panel="reflection">
+          <span class="kicker">Student reflection</span><h2>Reflection and self-assessment</h2>
+          <div class="reflection-card"><p>This lab helped me see that neural-network learning is a process of adjustment rather than instant intelligence. The first predictions are weak because the weights begin without useful knowledge. Through repeated feedback, the network measures its error and changes the weights until the pattern becomes clearer. This mirrors the way people and leaders adapt to new realities: progress requires patience, honest feedback, willingness to change an unsuccessful approach, and confidence that improvement can occur through disciplined effort.</p><p>Writing the training steps in Python strengthened my understanding of activation functions and backpropagation because I could see how each calculation affected the final result. I also learned not to confuse a low loss on four examples with real-world readiness. A model may work technically and still create ethical or operational harm if the data is weak, the output is deceptive, or leaders ignore human review. My next step is to compare this basic ANN with a framework-based model and add validation data so I can examine generalization instead of only training performance.</p></div>
+          <div class="reflection-note"><div><strong>Strength</strong><span>Made the learning process visible and reproducible.</span></div><div><strong>Growth</strong><span>Connected model behavior with adaptive leadership.</span></div><div><strong>Next step</strong><span>Add validation data and framework comparison.</span></div></div>
+        </section>
+        <div class="artifact-switcher"><a href="eventease-ai.html"><span>Previous project</span><strong>← EventEase AI</strong></a><a href="data-quality-bias-audit.html"><span>Next project</span><strong>Data Quality & Bias Audit →</strong></a></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer"><div class="container footer-grid"><span>Ruchitha Nelluri · Applied AI portfolio</span><a href="artifacts.html">Artifact catalog →</a></div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
